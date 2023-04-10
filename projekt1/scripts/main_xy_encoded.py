@@ -27,6 +27,7 @@ classDict["omL"] = 2
 
 y = np.array([classDict[value[0]] for value in tmp_y.tolist()])
 
+
 # Remove the "y" column from X
 D = D.iloc[:,:7]
 
@@ -40,22 +41,34 @@ X = np.delete(X,2,1)
 np.shape(X)
 np.shape(y)
 
+
 X = X - np.mean(X, axis = 0)
 X = X/np.std(X, axis = 0)
 
+# Set one hot encoding
+y_len = len(y)
+one_hot = np.zeros(shape=[y_len,3])
+one_hot[:,0][y == 0] = 1
+one_hot[:,1][y == 1] = 1
+one_hot[:,2][y == 2] = 1
 
+X = np.concatenate((X, one_hot), axis = 1)
 
 # Add attributes names
-attributeNames = np.array(["mcg", "gvh", "aac", "alm1", "alm2"])
+classNames = ["cytoplasm", "inner", "outer"]
+attributeNames = np.array(["mcg", "gvh", "aac", "alm1"]+ classNames)
+
+#Extract y-vector again
+tmp_y = X[:,4]
+X = np.delete(X, 4, 1)
+
+
 
 # Add class Names
 # Get N .. ect TODO
 N = len(y)
-
 N = len(y)
 M = len(attributeNames)
-classNames = np.array(["cytoplasm", "inner", "outer"])
-C = len(classNames)
 
 
 
