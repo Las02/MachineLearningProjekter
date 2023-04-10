@@ -118,7 +118,7 @@ from sklearn.model_selection import KFold
 
 # Function to crossval data
 def crossval(fold, X, y):
-    kf = KFold(n_splits=fold)
+    kf = KFold(n_splits=fold, shuffle=True,random_state = 10042023)
     for train, test in kf.split(X):
         trainX = X[train,:]
         testX = X[test,:]
