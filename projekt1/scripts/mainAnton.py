@@ -5,22 +5,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-<<<<<<< HEAD
-# Extract y and class Names
-classNames = sorted(np.unique(tmp_y))
-classDict = dict(zip(classNames,range(len(classNames))))
-classDict
-classDict["imL"] = 1
-classDict["imS"] = 1
-classDict["imU"] = 1
-classDict["im"] = 1
-classDict["pp"] = 2
-classDict["om"] = 2
-classDict["omL"] = 2
-
-y = [classDict[value[0]] for value in tmp_y.tolist()]
-=======
->>>>>>> 588724c0cbce6126bdd93b75d11bef3017f08e78
 
 
 Data = pd.read_csv("../data/ecoli.data", sep = "\s+")
@@ -28,12 +12,7 @@ Data = pd.read_csv("../data/ecoli.data", sep = "\s+")
 header = ["Seqname", "mcg", "gvh", "lip", "chg", "aac", "alm1", "alm2", "cd"]
 Data.columns = header
 
-<<<<<<< HEAD
-# Add attributes names
-attributeNames = np.array(["mcg", "gvh", "lip", "chg", "aac", "alm1", "alm2"])
-=======
 pca = PCA(n_components = 2)
->>>>>>> 588724c0cbce6126bdd93b75d11bef3017f08e78
 
 Classifier = Data["cd"]
 
