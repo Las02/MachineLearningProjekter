@@ -2,8 +2,11 @@ import pandas as pd
 import numpy as np
 
 D = pd.read_csv("../data/ecoli.data", header = None, sep="\s+")
+
+
 # Remove ac numbers
 D = D.iloc[:,1:]
+
 
 # select y-vector 
 tmp_y=D[[8]]
@@ -30,13 +33,15 @@ D = D.iloc[:,:7]
 # Extract the ouput values to np matrix
 np.array(D.values)
 X = D.values
+X_del = np.delete(X,2,1)
+X_del = np.delete(X_del,2,1)
 
 # shapes are correct
-np.shape(X)
+np.shape(X_del)
 np.shape(y)
 
 # Add attributes names
-attributeNames = np.array(["mcg", "gvh", "lip", "chg", "aac", "alm1", "alm2"])
+attributeNames = np.array(["mcg", "gvh", "aac", "alm1", "alm2"])
 
 # Add class Names
 # Get N .. ect TODO
