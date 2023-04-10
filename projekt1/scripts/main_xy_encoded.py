@@ -36,7 +36,7 @@ np.shape(X)
 np.shape(y)
 
 # Add attributes names
-attributeNames = np.array(["cytoplasm","Inner","outer"])
+attributeNames = np.array(["mcg", "gvh", "lip", "chg", "aac", "alm1", "alm2"])
 
 # Add class Names
 # Get N .. ect TODO
@@ -44,5 +44,6 @@ N = len(y)
 
 N = len(y)
 M = len(attributeNames)
+classNames = np.array(["cytoplasm", "inner", "outer"])
 C = len(classNames)
 
