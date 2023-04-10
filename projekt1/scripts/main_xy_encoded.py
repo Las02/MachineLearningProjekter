@@ -25,7 +25,7 @@ classDict["pp"] = 2
 classDict["om"] = 2
 classDict["omL"] = 2
 
-y = [classDict[value[0]] for value in tmp_y.tolist()]
+y = np.array([classDict[value[0]] for value in tmp_y.tolist()])
 
 # Remove the "y" column from X
 D = D.iloc[:,:7]
@@ -33,12 +33,17 @@ D = D.iloc[:,:7]
 # Extract the ouput values to np matrix
 np.array(D.values)
 X = D.values
-X_del = np.delete(X,2,1)
-X_del = np.delete(X_del,2,1)
+X = np.delete(X,2,1)
+X = np.delete(X,2,1)
 
 # shapes are correct
-np.shape(X_del)
+np.shape(X)
 np.shape(y)
+
+X = X - np.mean(X, axis = 0)
+X = X/np.std(X, axis = 0)
+
+
 
 # Add attributes names
 attributeNames = np.array(["mcg", "gvh", "aac", "alm1", "alm2"])
