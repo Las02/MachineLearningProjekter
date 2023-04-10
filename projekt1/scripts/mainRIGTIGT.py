@@ -4,7 +4,6 @@ import numpy as np
 from sklearn.decomposition import PCA 
 import matplotlib.pyplot as plt 
 import seaborn as sns
-from matplotlib.patches import Circle
 
 D = pd.read_csv("../data/ecoli.data", header = None, sep="\s+")
 # Remove ac numbers
@@ -22,9 +21,9 @@ D.columns = attributeNames
 # Centering the data and standidizing 
 # We are not doing it manually since its
 # implemented in the method
-#for row in D.columns:
-#    if row not in ["lip","chg"]:
-#        D[row] = (D[row] - D[row].mean()) 
+for row in D.columns:
+    if row not in ["lip","chg"]:
+       D[row] = ((D[row]-D[row].mean()) / D[row].std()) 
 
 # Set binary values to 0 or 1
 D["lip"][D["lip"] == 0.48]=0
@@ -105,8 +104,8 @@ fig, ax = plt.subplots(figsize=(8,8))
 
 for i, (x, y) in enumerate(zip(loadings[:,0], loadings[:,1])):
     ax.arrow(0, 0, x, y, head_width=0.1, head_length=0.1, fc='k', ec='k')
-    ax.text(x*1.2, y*1.2, D_nobin.columns[i], ha='center', va='center', fontsize=12, color='b')
-    ax.text(x*1.4, y*1.4, "{:.2f}".format(corr_matrix[i,i]), ha='center', va='center', fontsize=10, color='r')
+    ax.text(x*1.2, y*1.2, D_nobin.columns[i], ha='center', va='center', fontsize=12, color='g')
+    #ax.text(x*1.4, y*1.4, "{:.2f}".format(corr_matrix[i,i]), ha='center', va='center', fontsize=10, color='r')
 ax.set_xlim([-1, 1])
 ax.set_ylim([-1, 1])
 ax.set_xlabel("PC1 ({}% of variance)".format(round(pca.explained_variance_ratio_[0]*100, 2)))
