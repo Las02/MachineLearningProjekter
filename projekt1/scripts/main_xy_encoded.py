@@ -46,7 +46,7 @@ X = X/np.std(X, axis = 0)
 
 
 # Add attributes names
-attributeNames = np.array(["mcg", "gvh", "aac", "alm1", "alm2"])
+attributeNames = ["mcg", "gvh", "aac", "alm1", "alm2"]
 
 # Add class Names
 # Get N .. ect TODO
@@ -54,9 +54,9 @@ N = len(y)
 
 N = len(y)
 M = len(attributeNames)
-classNames = np.array(["cytoplasm", "inner", "outer"])
+classNames = ["cytoplasm", "inner", "outer"]
 C = len(classNames)
 
 
 
-
+#y = y[:, np.newaxis]

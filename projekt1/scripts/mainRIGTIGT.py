@@ -112,7 +112,7 @@ ax.set_xlabel("PC1 ({}% of variance)".format(round(pca.explained_variance_ratio_
 ax.set_ylabel("PC2 ({}% of variance)".format(round(pca.explained_variance_ratio_[1]*100, 2)))
 plt.title("PCA Correlation Circle")
 
-circle = Circle((0,0), radius=1, fill=False, linestyle='--', color='gray', alpha=0.5)
-ax.add_artist(circle)
+#circle = Circle((0,0), radius=1, fill=False, linestyle='--', color='gray', alpha=0.5)
+#ax.add_artist(circle)
 
 plt.show()
