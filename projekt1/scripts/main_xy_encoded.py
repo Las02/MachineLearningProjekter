@@ -36,7 +36,7 @@ np.shape(X)
 np.shape(y)
 
 # Add attributes names
-attributeNames = np.array(["mcg", "gvh", "lip", "chg", "aac", "alm1", "alm2"])
+attributeNames = np.array(["cytoplasm","Inner","outer"])
 
 # Add class Names
 # Get N .. ect TODO
