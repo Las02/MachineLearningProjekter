@@ -36,7 +36,7 @@ DataClean = DataClean.drop("chg",axis = 1)
 tmp_y = list(Data["cd"])
 
 sns.pairplot(DataClean, hue ="cd",diag_kind="hist", corner = True)
-             
+plt.legend(loc = "best")
 
 fig, axs = plt.subplots(ncols=2,nrows = 3, figsize = (20,20))
 sns.histplot(DataClean, x="mcg",ax=axs[0,0])
