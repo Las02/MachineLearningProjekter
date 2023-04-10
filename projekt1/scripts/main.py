@@ -61,5 +61,6 @@ DataTotal["cd"][DataTotal["cd"] == "imU"] = "im"
 DataTotal["cd"][DataTotal["cd"] == "pp"] = "om"
 DataTotal["cd"][DataTotal["cd"] == "omL"] = "om"
 DataTotal["cd"][DataTotal["cd"] == "imU"] = "om"
-DataTotal["cd"][DataTotal["cd"] == "imL"]
+
+
 
