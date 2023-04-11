@@ -1,6 +1,10 @@
 import pandas as pd
 import numpy as np
-
+from matplotlib.pylab import figure, plot, subplot, xlabel, ylabel, hist, show
+import matplotlib.pyplot as plt
+import sklearn.linear_model as lm
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import mean_squared_error
 D = pd.read_csv("../data/ecoli.data", header = None, sep="\s+")
 
 
@@ -59,7 +63,7 @@ classNames = ["cytoplasm", "inner", "outer"]
 attributeNames = np.array(["mcg", "gvh", "aac", "alm1"] + classNames)
 
 #Extract y-vector again
-tmp_y = X[:,4]
+y = X[:,4]
 X = np.delete(X, 4, 1)
 
 
@@ -71,6 +75,6 @@ N = len(y)
 N = len(y)
 M = len(attributeNames)
 
-print(attributeNames)
+
 
 
