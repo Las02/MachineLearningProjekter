@@ -2,11 +2,11 @@ from sklearn import ensemble
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import GridSearchCV
 import matplotlib.pyplot as plt
+import numpy as np
 
+from main_xy_encoded_for_part_c import *
 
-from main_xy_encoded import *
-
-reg_par_list =  (np.arange(1, 20, 1))
+reg_par_list =  (np.arange(0.5, 10, 1))
 param_grid = {"max_depth":reg_par_list}
 
 
@@ -20,3 +20,7 @@ plt.title("Generalization error for different parameters of Lambda")
 plt.xlabel("Lambda")
 plt.ylabel("Error")
 
+
+#Baseline
+un = np.unique(y,return_counts = True)
+print(un)

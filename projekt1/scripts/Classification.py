@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 
 
 # requires data from main
-from main_xy_encoded import *
+from main_xy_encoded_for_part_c import *
 
 # Fit logistic regression model
 

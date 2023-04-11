@@ -8,7 +8,7 @@ from toolbox_02450 import train_neural_net, draw_neural_net
 from scipy import stats
 
 
-from main_xy_encoded import *
+from main_xy_encoded_for_part_c import *
 
 
 
