@@ -28,16 +28,16 @@ for k in range(K):
     model = model.fit(X_train,y_train)
     y_pred = model.predict(X_test)
     MSE = mean_squared_error(y_test,y_pred)
-    grid_results.append([c,MSE])
     
     
+    missclassified = len(np.where(y_pred != y_test)[0])
+    error = missclassified / len(y_test)
+    print(c, "&",error,r"\\")
+    grid_results.append([c, error])
     
+    
+print(grid_results)
     
 
-
-#plt.scatter(reg_par_list,np.absolute(res["mean_test_score"]))
-plt.scatter([x[0] for x in grid_results],[x[1] for x in grid_results])
-plt.title("Generalization error for different parameters of Lambda")
-plt.xlabel("Lambda")
-plt.ylabel("Error")
-#plt.xscale('log',base=10)
+for c, error in grid_results:
+    print(c, error)
