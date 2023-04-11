@@ -94,7 +94,7 @@ n_replicates = 1       # number of networks trained in each k-fold
 max_iter = 10000         # stop criterion 2 (max epochs in training)
 
 # K-fold crossvalidation
-K = 5                  # only five folds to speed up this example
+K = 10                  # only five folds to speed up this example
 
 CV1 = model_selection.KFold(K, shuffle=True, random_state=100423)
 CV2 = model_selection.KFold(5, shuffle=True, random_state=100423)
@@ -206,5 +206,25 @@ draw_neural_net(weights, biases, tf, attribute_names=attributeNames)
 # Print the average classification error rate
 print('\nGeneralization error/average error rate: {0}%'.format(round(100*np.mean(errors),4)))
     
+
+
+
+
 print(BestErrorRateList)
 print(BestHiddenUnitList)
+
+ANNError = [0.3529,0.3529,0.3529,0.3529,0.2941,0.2674,0.3939,0.5455,0.4242, 0.4242]
+LinError = [0.3367, 0.174, 0.222, 0.1693, 0.4708, 0.3226,1.041, 0.5834, 0.753, 0.676]
+BaseError = [0.6875,0.6941,0.6684, 0.6465, 0.5205, 0.5029, 0.5550, 0.5842, 0.6922, 0.6697]
+
+
+
+stats.ttest_rel(ANNError,LinError)
+stats.ttest_rel(ANNError,BaseError)
+stats.ttest_rel(LinError,BaseError)
+
+np.mean(LinError)
+np.mean(BaseError)
+
+
+
