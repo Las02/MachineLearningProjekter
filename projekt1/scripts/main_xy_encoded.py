@@ -56,11 +56,12 @@ X = np.concatenate((X, one_hot), axis = 1)
 
 # Add attributes names
 classNames = ["cytoplasm", "inner", "outer"]
-attributeNames = np.array(["mcg", "gvh", "aac", "alm1"]+ classNames)
+attributeNames = np.array(["mcg", "gvh", "aac", "alm1"] + classNames)
 
 #Extract y-vector again
 tmp_y = X[:,4]
 X = np.delete(X, 4, 1)
+
 
 
 
@@ -70,6 +71,6 @@ N = len(y)
 N = len(y)
 M = len(attributeNames)
 
-
+print(attributeNames)
 
 
