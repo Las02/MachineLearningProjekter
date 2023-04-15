@@ -215,7 +215,7 @@ print(BestHiddenUnitList)
 
 ANNError = [0.3529,0.3529,0.3529,0.3529,0.2941,0.2674,0.3939,0.5455,0.4242, 0.4242]
 LinError = [0.3367, 0.174, 0.222, 0.1693, 0.4708, 0.3226,1.041, 0.5834, 0.753, 0.676]
-BaseError = [0.6875,0.6941,0.6684, 0.6465, 0.5205, 0.5029, 0.5550, 0.5842, 0.6922, 0.6697]
+BaseError = [1.099,0.9415,1.0846, 0.9680, 0.8354, 1.0527, 0.9933, 0.9890, 1.078, 0.9756]
 
 
 
@@ -223,6 +223,7 @@ stats.ttest_rel(ANNError,LinError)
 stats.ttest_rel(ANNError,BaseError)
 stats.ttest_rel(LinError,BaseError)
 
+np.mean(ANNError)
 np.mean(LinError)
 np.mean(BaseError)
 
