@@ -171,9 +171,12 @@ def baselinemodel(train, test):
     return error
 
 
+er_list = list()
 ### THe baseline model
 for testX, trainX, trainy, testy in crossval(10,X,y):
     
     error = baselinemodel(trainy, testy)
-    print(error)
+    er_list.append(np.round(error,4))
+    
+
 
