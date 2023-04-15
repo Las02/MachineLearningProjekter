@@ -131,12 +131,10 @@ def crossval(fold, X, y):
         yield testX, trainX, trainy, testy
 
 
-print(r"""
-\begin{center}
-\begin{tabular}{ |c|c| } 
-\hline
-lambda  &  error \\
-""")
+
+
+a_list = []
+er_list = []
 # Run the outer cross val
 for testX, trainX, trainy, testy in crossval(10,X,y):
 
@@ -158,10 +156,12 @@ for testX, trainX, trainy, testy in crossval(10,X,y):
     pred = model.predict(testX)
     error = mean_squared_error(testy, pred, squared = True)
     print(alpha, "&",error,r"\\")
-   
-print(r""" \hline
-\end{tabular}
-\end{center}""")
+    a_list.append(alpha)
+    er_list.append(error)
+print(a_list)
+print(er_list)
+
+
 
 def baselinemodel(train, test):  
     test_estimate = np.zeros(len(test))
@@ -170,9 +170,10 @@ def baselinemodel(train, test):
     error = mean_squared_error(test_estimate, test, squared = True)
     return error
 
+
 ### THe baseline model
 for testX, trainX, trainy, testy in crossval(10,X,y):
     
     error = baselinemodel(trainy, testy)
-    print("error", error)
+    print(error)
 
