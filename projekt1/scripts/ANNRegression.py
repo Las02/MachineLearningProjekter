@@ -157,7 +157,7 @@ for k1, (train_index, test_index) in enumerate(CV1.split(X,y)):
             y_test = y_test.type(dtype=torch.uint8)
         
             e = y_test_est != y_test
-            error_rate = (sum(e).type(torch.float)/len(y_test)).data.numpy()
+            error_rate = (sum(e**2).type(torch.float)/len(y_test)).data.numpy()
             errors.append(error_rate) # store error rate for current CV fold 
         
             
