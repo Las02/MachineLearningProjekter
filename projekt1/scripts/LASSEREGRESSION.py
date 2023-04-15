@@ -85,18 +85,21 @@ plt.title("Generalization error for different parameters of Lambda")
 plt.xlabel("Lambda")
 plt.ylabel("Error")
 plt.xscale('log',base=10) 
-
 alpha = grid_search.best_estimator_.__dict__["alpha"]
 
-
+grid_search
 ### Fit the final Linear regression with regularzation
 model = lm.Ridge(alpha=alpha)
 fit = model.fit(X,y)
 pred = model.predict(X)
 
 # Variables
-fit.intercept_
-fit.coef_
+intercept = fit.intercept_
+coef = fit.coef_
+values_coef = np.append(coef, intercept)
+names_coef = np.append(attributeNames, "intercept")
+
+
 
 for i in [4,5,6]:
     fig, ((ax1, ax2),(ax3, ax4)) = plt.subplots(2,2) 
