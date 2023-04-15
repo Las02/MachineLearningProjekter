@@ -6,7 +6,7 @@ import sklearn.linear_model as lm
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error
 D = pd.read_csv("../data/ecoli.data", header = None, sep="\s+")
-
+import seaborn as sns
 
 # Remove ac numbers
 D = D.iloc[:,1:]
@@ -80,26 +80,27 @@ model = lm.Ridge()
 grid_search = GridSearchCV(model, param_grid,return_train_score = True, cv=10)
 grid_search.fit(X,y)
 res = grid_search.cv_results_
-plt.scatter(reg_par_list,-(res["mean_test_score"]))
+plt.scatter(reg_par_list, 1-(res["mean_test_score"]))
 plt.title("Generalization error for different parameters of Lambda")
 plt.xlabel("Lambda")
 plt.ylabel("Error")
 plt.xscale('log',base=10) 
 alpha = grid_search.best_estimator_.__dict__["alpha"]
-
+1-(res["mean_test_score"])
 grid_search
 ### Fit the final Linear regression with regularzation
 model = lm.Ridge(alpha=alpha)
 fit = model.fit(X,y)
 pred = model.predict(X)
+np.min(1-(res["mean_test_score"]))
 
 # Variables
 intercept = fit.intercept_
 coef = fit.coef_
 values_coef = np.append(coef, intercept)
 names_coef = np.append(attributeNames, "intercept")
-
-
+sns.pointplot(y=names_coef, x=values_coef).set(title="Coefficients of the linear regression")
+sns.barplot(y=names_coef, x=values_coef)
 
 for i in [4,5,6]:
     fig, ((ax1, ax2),(ax3, ax4)) = plt.subplots(2,2) 
@@ -155,7 +156,7 @@ for testX, trainX, trainy, testy in crossval(10,X,y):
     model = lm.Ridge(alpha=alpha)
     fit = model.fit(trainX,trainy)
     pred = model.predict(testX)
-    error = mean_squared_error(testy, pred, squared = False)
+    error = mean_squared_error(testy, pred, squared = True)
     print(alpha, "&",error,r"\\")
    
 print(r""" \hline
@@ -166,15 +167,12 @@ def baselinemodel(train, test):
     test_estimate = np.zeros(len(test))
     test_estimate[::] = np.mean(train)   
     test_estimate
-    error = mean_squared_error(test_estimate, test, squared = False)
+    error = mean_squared_error(test_estimate, test, squared = True)
     return error
 
 ### THe baseline model
 for testX, trainX, trainy, testy in crossval(10,X,y):
     
-    error_list =  []
-    for testX, trainX, trainy, testy in crossval(10,trainX, trainy):
-        error = baselinemodel(trainy, testy)
-        error_list.append(error)
-    print("error", min(error_list))
+    error = baselinemodel(trainy, testy)
+    print("error", error)
 
